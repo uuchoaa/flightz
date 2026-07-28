@@ -2,6 +2,13 @@
 
 Round-trip flight search over Google Flights' private shopping endpoint - no official API, no keys - built on Clean Architecture, with the search narrating every pipeline step live over Server-Sent Events.
 
+<img width="1341" height="1074" alt="flightz-voos" src="https://github.com/user-attachments/assets/e7b97fd4-777e-4c91-97fc-8de1d75dbb3b" />
+
+<img width="1341" height="1074" alt="fligthz-logs" src="https://github.com/user-attachments/assets/65377c69-b285-461d-8a8b-93fd4f4ee5bf" />
+
+<img width="1341" height="1074" alt="flightz-ajustes" src="https://github.com/user-attachments/assets/e5f8bd0b-fd1d-4773-9ce1-8c9383b72872" />
+
+
 ## Highlights
 
 * Errors as values: No exception crosses a layer boundary; the dependency rule is an executable test (`test/architecture_test.rb`).
