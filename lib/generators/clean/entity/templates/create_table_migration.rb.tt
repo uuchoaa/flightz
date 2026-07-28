@@ -1,0 +1,14 @@
+class Create<%= table_name.camelize %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def change
+    create_table :<%= table_name %> do |t|
+<% attributes.each do |attribute| -%>
+<% if attribute.reference? -%>
+      t.references :<%= attribute.name %>, null: false, foreign_key: true
+<% else -%>
+      t.<%= attribute.type %> :<%= attribute.name %>
+<% end -%>
+<% end -%>
+      t.timestamps
+    end
+  end
+end

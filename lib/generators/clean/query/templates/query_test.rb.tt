@@ -1,0 +1,8 @@
+require "test_helper"
+
+# Born red: NotImplementedError until the query is written.
+class <%= (class_path.map(&:camelize) + ["Queries", file_name.camelize]).join("::") %>Test < ActiveSupport::TestCase
+  test "answers" do
+    assert_not_nil <%= (class_path.map(&:camelize) + ["Queries", file_name.camelize]).join("::") %>.new.call({})
+  end
+end

@@ -1,0 +1,15 @@
+<% modules = class_path.map(&:camelize) -%>
+<% modules.each_with_index do |mod, i| -%>
+<%= "  " * i %>module <%= mod %>
+<% end -%>
+<%= "  " * modules.size %>class <%= class_name.demodulize %>
+<%= "  " * modules.size %>  PAYLOAD = %i[<%= payload.join(" ") %>].freeze
+
+<%= "  " * modules.size %>  # call(payload) -> Result
+<%= "  " * modules.size %>  def call(payload)
+<%= "  " * modules.size %>    raise NotImplementedError, "#{self.class}#call"
+<%= "  " * modules.size %>  end
+<%= "  " * modules.size %>end
+<% modules.each_with_index do |_, i| -%>
+<%= "  " * (modules.size - 1 - i) %>end
+<% end -%>

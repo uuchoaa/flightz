@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* The token seam: the kit styles against these names (bg-(--app-*) in the
+   Phlex components); this block owns the values. Retheming is editing here. */
+:root {
+  --app-primary: #00796b;
+  --app-primary-strong: #00695c;
+  --app-container: #d6f2ee;
+  --app-container-strong: #a7ddd5;
+  --app-on-container: #004d40;
+  --app-surface: #f1f3f4;
+  --app-danger: #b3261e;
+  --app-good: #e8f5e9;
+  --app-good-ink: #1b5e20;
+  --app-worn: #fff8e1;
+  --app-worn-ink: #7c5800;
+  --app-broken: #fdecea;
+  --app-broken-ink: #b3261e;
+}

@@ -1,0 +1,43 @@
+# Flightz (clean architecture). Single-container Kamal deploy on Hetzner.
+# SQLite (primary + Solid Queue/Cache/Cable) lives on a persistent volume;
+# Solid Queue runs inside Puma (SOLID_QUEUE_IN_PUMA=1), so no separate job host.
+
+service: flightz
+
+# ghcr.io image. Replace the user if your GitHub handle differs.
+image: uuchoaa/flightz
+
+# Deploy to this server (Hetzner Cloud, Ubuntu 24.04, amd64).
+servers:
+  web:
+    - 2.28.6.169
+
+# TLS via Let's Encrypt. sslip.io maps the IP to a hostname with no domain
+# registration: 1.2.3.4 -> 1-2-3-4.sslip.io (fill with the server IP, hyphens).
+proxy:
+  ssl: true
+  host: 2-28-6-169.sslip.io
+
+registry:
+  server: ghcr.io
+  username: uuchoaa
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Mac is arm64; Hetzner is amd64 -> cross-build.
+builder:
+  arch: amd64
+
+env:
+  clear:
+    SOLID_QUEUE_IN_PUMA: 1
+  secret:
+    - RAILS_MASTER_KEY
+    - GROQ_API_KEY
+
+# Persist SQLite databases and Active Storage blobs across deploys.
+volumes:
+  - "flightz_storage:/rails/storage"
+
+# Bridge fingerprinted assets between versions to avoid 404s mid-deploy.
+asset_path: /rails/public/assets

@@ -1,0 +1,13 @@
+<% modules = class_path.map(&:camelize) + ["Queries"] -%>
+<% modules.each_with_index do |mod, i| -%>
+<%= "  " * i %>module <%= mod %>
+<% end -%>
+<%= "  " * modules.size %>class <%= file_name.camelize %>
+<%= "  " * modules.size %>  # call(params) -> as_json-ready data<%= params.any? ? " (params: #{params.join(', ')})" : "" %>
+<%= "  " * modules.size %>  def call(params)
+<%= "  " * modules.size %>    raise NotImplementedError, "#{self.class}#call"
+<%= "  " * modules.size %>  end
+<%= "  " * modules.size %>end
+<% modules.each_with_index do |_, i| -%>
+<%= "  " * (modules.size - 1 - i) %>end
+<% end -%>

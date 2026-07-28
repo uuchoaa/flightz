@@ -1,0 +1,8 @@
+require "test_helper"
+
+# Born red: NotImplementedError until the handler is written.
+class <%= class_name %>Test < ActiveSupport::TestCase
+  test "returns a Result" do
+    assert_kind_of Result, <%= class_name %>.new.call({})
+  end
+end
