@@ -1,0 +1,8 @@
+en:
+  commands:
+    # clean:notices
+    update_settings:
+      done: "Settings updated successfully."
+    capture:
+      done: "Captured"
+      proposed: "Found items — review and confirm"

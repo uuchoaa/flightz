@@ -1,0 +1,9 @@
+import { html } from "lib/html"
+
+export function <%= class_name.gsub("::", "") %>() {
+  return html`
+    <div>
+      <%= file_name.humanize %>: implement me
+    </div>
+  `
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title>Flightz</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+    <%= stylesheet_link_tag :app %>
+    <script>window.I18N = <%= raw I18n.t("js").to_json %></script>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-white antialiased">
+    <%= yield %>
+  </body>
+</html>

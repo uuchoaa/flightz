@@ -1,0 +1,23 @@
+class <%= relate_migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def up
+<% if replace_column -%>
+    remove_column :<%= table_name %>, :<%= replace_column %>
+<% end -%>
+    add_reference :<%= table_name %>, :<%= parent %>, null: false, foreign_key: true
+<% if scope_unique -%>
+    remove_index :<%= table_name %>, :<%= scope_unique %>, if_exists: true
+    add_index :<%= table_name %>, %i[<%= parent %>_id <%= scope_unique %>], unique: true
+<% end -%>
+  end
+
+  def down
+<% if scope_unique -%>
+    remove_index :<%= table_name %>, %i[<%= parent %>_id <%= scope_unique %>], if_exists: true
+    add_index :<%= table_name %>, :<%= scope_unique %>, unique: true
+<% end -%>
+    remove_reference :<%= table_name %>, :<%= parent %>
+<% if replace_column -%>
+    add_column :<%= table_name %>, :<%= replace_column %>, :string
+<% end -%>
+  end
+end

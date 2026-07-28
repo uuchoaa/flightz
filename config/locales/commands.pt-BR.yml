@@ -1,0 +1,8 @@
+"pt-BR":
+  commands:
+    # clean:notices
+    update_settings:
+      done: "Ajustes salvos."
+    capture:
+      done: "Registrado"
+      proposed: "Itens encontrados — revise e confirme"
